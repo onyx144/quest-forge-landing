@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState } from 'react';
 
 interface LanguageContextType {
@@ -66,6 +65,15 @@ const translations = {
     'demo.subtitle': 'Experience the magic yourself before making a decision',
     'demo.cta': 'Play Demo Now',
     'demo.desc': 'Test our sample escape room and see how engaging online quests can be for your audience',
+    'demo.form.title': 'Demo Request',
+    'demo.form.name': 'Name',
+    'demo.form.namePlaceholder': 'Enter your name',
+    'demo.form.email': 'Email',
+    'demo.form.emailPlaceholder': 'your@email.com',
+    'demo.form.message': 'Message',
+    'demo.form.messagePlaceholder': 'Tell us about your project...',
+    'demo.form.cancel': 'Cancel',
+    'demo.form.submit': 'Submit',
     
     // Contact
     'contact.title': 'Ready to Start?',
@@ -73,6 +81,25 @@ const translations = {
     'contact.cta': 'Get Free Consultation',
     'contact.phone': 'Call Us',
     'contact.email': 'Email Us',
+    
+    // Contact Form
+    'contact.form.title': 'Contact Us',
+    'contact.form.description': 'Contact us to order a custom quest and receive a demo game code. Our team will help create a unique gaming experience for your business.',
+    'contact.form.name': 'Name',
+    'contact.form.namePlaceholder': 'Your name',
+    'contact.form.email': 'Email',
+    'contact.form.emailPlaceholder': 'your@email.com',
+    'contact.form.phone': 'Phone',
+    'contact.form.phonePlaceholder': '+1 (555) 123-4567',
+    'contact.form.company': 'Company',
+    'contact.form.companyPlaceholder': 'Company name',
+    'contact.form.youtube': 'YouTube Video (optional)',
+    'contact.form.youtubePlaceholder': 'https://youtube.com/watch?v=...',
+    'contact.form.message': 'Message',
+    'contact.form.messagePlaceholder': 'Tell us about your project, goals and expectations...',
+    'contact.form.downloadPdf': 'Download Brochure',
+    'contact.form.cancel': 'Cancel',
+    'contact.form.submit': 'Submit',
   },
   uk: {
     // Navigation
@@ -132,6 +159,15 @@ const translations = {
     'demo.subtitle': 'Відчуйте магію самостійно перед прийняттям рішення',
     'demo.cta': 'Грати Демо Зараз',
     'demo.desc': 'Протестуйте наш зразковий ескейп-рум і побачте, наскільки захоплюючими можуть бути онлайн квести для вашої аудиторії',
+    'demo.form.title': 'Заявка на Демо',
+    'demo.form.name': 'Ім\'я',
+    'demo.form.namePlaceholder': 'Введіть ваше ім\'я',
+    'demo.form.email': 'Email',
+    'demo.form.emailPlaceholder': 'your@email.com',
+    'demo.form.message': 'Повідомлення',
+    'demo.form.messagePlaceholder': 'Розкажіть про ваш проект...',
+    'demo.form.cancel': 'Скасувати',
+    'demo.form.submit': 'Відправити',
     
     // Contact
     'contact.title': 'Готові Почати?',
@@ -139,6 +175,25 @@ const translations = {
     'contact.cta': 'Безкоштовна Консультація',
     'contact.phone': 'Зателефонувати',
     'contact.email': 'Написати Email',
+    
+    // Contact Form
+    'contact.form.title': 'Зв\'яжіться з нами',
+    'contact.form.description': 'Зв\'яжіться з нами для замовлення індивідуального квесту та отримання коду на демо-версію гри. Наша команда допоможе створити унікальний ігровий досвід для вашого бізнесу.',
+    'contact.form.name': 'Ім\'я',
+    'contact.form.namePlaceholder': 'Ваше ім\'я',
+    'contact.form.email': 'Email',
+    'contact.form.emailPlaceholder': 'your@email.com',
+    'contact.form.phone': 'Телефон',
+    'contact.form.phonePlaceholder': '+38 (067) 123-45-67',
+    'contact.form.company': 'Компанія',
+    'contact.form.companyPlaceholder': 'Назва компанії',
+    'contact.form.youtube': 'YouTube Відео (опціонально)',
+    'contact.form.youtubePlaceholder': 'https://youtube.com/watch?v=...',
+    'contact.form.message': 'Повідомлення',
+    'contact.form.messagePlaceholder': 'Розкажіть про ваш проект, цілі та очікування...',
+    'contact.form.downloadPdf': 'Завантажити Брошуру',
+    'contact.form.cancel': 'Скасувати',
+    'contact.form.submit': 'Відправити',
   }
 };
 
