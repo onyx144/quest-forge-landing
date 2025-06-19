@@ -9,97 +9,99 @@ interface LanguageContextType {
 const translations = {
   en: {
     // Navigation
-    'nav.demo': 'Try Demo',
-    'nav.contact': 'Contact Us',
-    
-    // Hero Section
-    'hero.title': 'Launch Your Branded Online Quest',
-    'hero.subtitle': 'Transform your business with interactive escape games that engage customers, build teams, and drive revenue',
-    'hero.cta': 'Get Your Custom Quest',
-    'hero.demo': 'Try Demo Quest',
-    
-    // What We Offer
-    'offer.title': 'What We Offer',
-    'offer.subtitle': 'Turnkey interactive online quests tailored for your business goals',
-    'offer.marketing.title': 'Marketing Campaigns',
-    'offer.marketing.desc': 'Boost engagement with gamified product promotions and brand experiences',
-    'offer.teambuilding.title': 'Team Building',
-    'offer.teambuilding.desc': 'Strengthen remote teams with collaborative puzzle-solving adventures',
-    'offer.onboarding.title': 'Staff Onboarding',
-    'offer.onboarding.desc': 'Make employee training memorable with interactive learning experiences',
-    'offer.events.title': 'Virtual Events',
-    'offer.events.desc': 'Create unforgettable celebrations and corporate gatherings online',
-    
-    // Why Profitable
-    'profit.title': 'Why It\'s Profitable',
-    'profit.subtitle': 'Smart investment with proven returns',
-    'profit.lowcost.title': 'Low Costs',
-    'profit.lowcost.desc': 'No physical venue or equipment needed - pure digital scalability',
-    'profit.scalable.title': 'High Scalability',
-    'profit.scalable.desc': 'Serve unlimited participants simultaneously worldwide',
-    'profit.monetization.title': 'Multiple Revenue Streams',
-    'profit.monetization.desc': 'Tickets, subscriptions, corporate packages, and licensing',
-    'profit.roi.title': '3.5x ROI',
-    'profit.roi.desc': 'Proven return on investment from gamified marketing campaigns',
-    
-    // How We Work
-    'process.title': 'How We Work',
-    'process.subtitle': 'From concept to launch in 5 simple steps',
-    'process.step1.title': 'Idea & Strategy',
-    'process.step1.desc': 'We analyze your goals and create the perfect quest concept',
-    'process.step2.title': 'Script & Storyline',
-    'process.step2.desc': 'Professional writers craft engaging narratives and puzzles',
-    'process.step3.title': 'Design & Video',
-    'process.step3.desc': 'Stunning visuals and immersive multimedia content',
-    'process.step4.title': 'Development & Testing',
-    'process.step4.desc': 'Technical implementation with rigorous quality assurance',
-    'process.step5.title': 'Launch & Support',
-    'process.step5.desc': 'Smooth delivery with ongoing technical support',
-    
-    // Use Cases
-    'cases.title': 'Use Cases',
-    'cases.subtitle': 'Versatile solutions for every business need',
-    
-    // Demo
-    'demo.title': 'Try Our Demo Quest',
-    'demo.subtitle': 'Experience the magic yourself before making a decision',
-    'demo.cta': 'Play Demo Now',
-    'demo.desc': 'Test our sample escape room and see how engaging online quests can be for your audience',
-    'demo.form.title': 'Demo Request',
-    'demo.form.name': 'Name',
-    'demo.form.namePlaceholder': 'Enter your name',
-    'demo.form.email': 'Email',
-    'demo.form.emailPlaceholder': 'your@email.com',
-    'demo.form.message': 'Message',
-    'demo.form.messagePlaceholder': 'Tell us about your project...',
-    'demo.form.cancel': 'Cancel',
-    'demo.form.submit': 'Submit',
-    
-    // Contact
-    'contact.title': 'Ready to Start?',
-    'contact.subtitle': 'Let\'s discuss your custom online quest project',
-    'contact.cta': 'Get Free Consultation',
-    'contact.phone': 'Call Us',
-    'contact.email': 'Email Us',
-    
-    // Contact Form
-    'contact.form.title': 'Contact Us',
-    'contact.form.description': 'Contact us to order a custom quest and receive a demo game code. Our team will help create a unique gaming experience for your business.',
-    'contact.form.name': 'Name',
-    'contact.form.namePlaceholder': 'Your name',
-    'contact.form.email': 'Email',
-    'contact.form.emailPlaceholder': 'your@email.com',
-    'contact.form.phone': 'Phone',
-    'contact.form.phonePlaceholder': '+1 (555) 123-4567',
-    'contact.form.company': 'Company',
-    'contact.form.companyPlaceholder': 'Company name',
-    'contact.form.youtube': 'YouTube Video (optional)',
-    'contact.form.youtubePlaceholder': 'https://youtube.com/watch?v=...',
-    'contact.form.message': 'Message',
-    'contact.form.messagePlaceholder': 'Tell us about your project, goals and expectations...',
-    'contact.form.downloadPdf': 'Download Brochure',
-    'contact.form.cancel': 'Cancel',
-    'contact.form.submit': 'Submit',
+   // Navigation
+'nav.demo': 'Try Demo Quest',
+'nav.contact': 'Contact Us',
+
+// Hero Section
+'hero.title': 'Launch Your Own Interactive Online Quest',
+'hero.subtitle': 'Engage your audience, promote your brand, and create unforgettable digital experiences',
+'hero.cta': 'Create My Quest',
+'hero.demo': 'Try Demo Now',
+
+// What We Offer
+'offer.title': 'What We Offer',
+'offer.subtitle': 'Fully customized online escape quests for business goals and engagement',
+'offer.marketing.title': 'Marketing Campaigns',
+'offer.marketing.desc': 'Gamified brand storytelling that boosts visibility and customer loyalty',
+'offer.teambuilding.title': 'Team Building',
+'offer.teambuilding.desc': 'Fun and immersive team experiences for remote or hybrid teams',
+'offer.onboarding.title': 'Staff Onboarding',
+'offer.onboarding.desc': 'Train and integrate new staff with engaging interactive scenarios',
+'offer.events.title': 'Virtual Events',
+'offer.events.desc': 'Host unique and memorable celebrations with a digital twist',
+
+// Why Profitable
+'profit.title': 'Why It\'s Profitable',
+'profit.subtitle': 'Low cost, high impact — built for scale',
+'profit.lowcost.title': 'Minimal Costs',
+'profit.lowcost.desc': 'No need for actors, venues or props — it all runs online',
+'profit.scalable.title': 'Unlimited Scalability',
+'profit.scalable.desc': 'Thousands of players can join simultaneously, anytime, anywhere',
+'profit.monetization.title': 'Flexible Monetization',
+'profit.monetization.desc': 'Sell access via tickets or subscriptions — your call',
+'profit.roi.title': '3.5x ROI',
+'profit.roi.desc': 'Gamified formats increase marketing ROI by up to 3.5x',
+
+// How We Work
+'process.title': 'How We Work',
+'process.subtitle': 'A complete journey from idea to online launch',
+'process.step1.title': 'Concept & Theme',
+'process.step1.desc': 'We collaborate to define your quest’s idea, brand fit, and objectives',
+'process.step2.title': 'Story & Puzzle Design',
+'process.step2.desc': 'Our writers build immersive stories and smart puzzles tailored to your goals',
+'process.step3.title': 'Design & Filming',
+'process.step3.desc': 'We create visual assets, animations, and optional videos for your quest',
+'process.step4.title': 'Development & QA',
+'process.step4.desc': 'The quest is built and tested across devices to ensure flawless performance',
+'process.step5.title': 'Launch & Access',
+'process.step5.desc': 'We connect payment, deploy the game, and hand over hosting credentials',
+
+// Use Cases
+'cases.title': 'Use Cases',
+'cases.subtitle': 'Where our online quests bring value',
+
+// Demo
+'demo.title': 'Try a Demo Quest',
+'demo.subtitle': 'Play through a sample to understand the value firsthand',
+'demo.cta': 'Start Demo',
+'demo.desc': 'Experience what your clients or team members would go through — fun, engaging, and unique',
+'demo.form.title': 'Request a Demo',
+'demo.form.name': 'Your Name',
+'demo.form.namePlaceholder': 'Enter your full name',
+'demo.form.email': 'Email Address',
+'demo.form.emailPlaceholder': 'name@company.com',
+'demo.form.message': 'Message',
+'demo.form.messagePlaceholder': 'What kind of quest are you looking for?',
+'demo.form.cancel': 'Cancel',
+'demo.form.submit': 'Request Demo',
+
+// Contact
+'contact.title': 'Let’s Create Your Quest',
+'contact.subtitle': 'Book a free consultation and get started',
+'contact.cta': 'Talk to an Expert',
+'contact.phone': 'Call Us',
+'contact.email': 'Send Us an Email',
+
+// Contact Form
+'contact.form.title': 'Contact Us',
+'contact.form.description': 'Ready to launch your branded online quest? Get in touch — we’ll help you build a one-of-a-kind experience that works.',
+'contact.form.name': 'Full Name',
+'contact.form.namePlaceholder': 'Your full name',
+'contact.form.email': 'Email',
+'contact.form.emailPlaceholder': 'name@business.com',
+'contact.form.phone': 'Phone Number',
+'contact.form.phonePlaceholder': '+1 (555) 123-4567',
+'contact.form.company': 'Company',
+'contact.form.companyPlaceholder': 'Your business name',
+'contact.form.youtube': 'Promo Video (optional)',
+'contact.form.youtubePlaceholder': 'https://youtube.com/watch?v=...',
+'contact.form.message': 'Your Message',
+'contact.form.messagePlaceholder': 'Tell us what kind of quest you want and your business goals',
+'contact.form.downloadPdf': 'Download Presentation',
+'contact.form.cancel': 'Cancel',
+'contact.form.submit': 'Send Request',
+
   },
   uk: {
     // Navigation
