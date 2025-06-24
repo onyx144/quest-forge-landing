@@ -82,11 +82,11 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
       <DialogContent className="sm:max-w-[600px] bg-gradient-to-br from-slate-900 to-purple-900 border-purple-500/20 max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-white text-center mb-4">
-            {t('contact.form.title') || 'Свяжитесь с нами'}
+            {t('contact.form.title')}
           </DialogTitle>
           <div className="text-purple-200 text-sm leading-relaxed">
             <p className="mb-3">
-              {t('contact.form.description') || 'Свяжитесь с нами для заказа индивидуального квеста и получения кода на демо-версию игры. Наша команда поможет создать уникальный игровой опыт для вашего бизнеса.'}
+              {t('contact.form.description')}
             </p>
           </div>
         </DialogHeader>
@@ -100,11 +100,11 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-purple-200">
-                      {t('contact.form.name') || 'Имя'}
+                      {t('contact.form.name')}
                     </FormLabel>
                     <FormControl>
                       <Input 
-                        placeholder={t('contact.form.namePlaceholder') || 'Ваше имя'}
+                        placeholder={t('contact.form.namePlaceholder')}
                         className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300"
                         {...field}
                       />
@@ -120,12 +120,12 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-purple-200">
-                      {t('contact.form.email') || 'Email'}
+                      {t('contact.form.email')}
                     </FormLabel>
                     <FormControl>
                       <Input 
                         type="email"
-                        placeholder={t('contact.form.emailPlaceholder') || 'your@email.com'}
+                        placeholder={t('contact.form.emailPlaceholder')}
                         className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300"
                         {...field}
                       />
@@ -143,11 +143,11 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-purple-200">
-                      {t('contact.form.phone') || 'Телефон'}
+                      {t('contact.form.phone')}
                     </FormLabel>
                     <FormControl>
                       <Input 
-                        placeholder={t('contact.form.phonePlaceholder') || '+1 (555) 123-4567'}
+                        placeholder={t('contact.form.phonePlaceholder')}
                         className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300"
                         {...field}
                       />
@@ -163,11 +163,11 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-purple-200">
-                      {t('contact.form.company') || 'Компания'}
+                      {t('contact.form.company')}
                     </FormLabel>
                     <FormControl>
                       <Input 
-                        placeholder={t('contact.form.companyPlaceholder') || 'Название компании'}
+                        placeholder={t('contact.form.companyPlaceholder')}
                         className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300"
                         {...field}
                       />
@@ -186,7 +186,7 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel className="text-purple-200">
-                      {t('contact.form.date') || 'Дата консультации'}
+                      {t('contact.form.date')}
                     </FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
@@ -202,7 +202,7 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                             {field.value ? (
                               format(field.value, "PPP")
                             ) : (
-                              <span>{t('contact.form.selectDate') || 'Выберите дату'}</span>
+                              <span>{t('contact.form.selectDate')}</span>
                             )}
                           </Button>
                         </FormControl>
@@ -231,7 +231,7 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-purple-200">
-                      {t('contact.form.time') || 'Время консультации'}
+                      {t('contact.form.time')}
                     </FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
@@ -239,7 +239,7 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                           <div className="flex items-center">
                             <Clock className="mr-2 h-4 w-4" />
                             <SelectValue 
-                              placeholder={t('contact.form.selectTime') || 'Выберите время'}
+                              placeholder={t('contact.form.selectTime')}
                               className="text-purple-300"
                             />
                           </div>
@@ -269,11 +269,11 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-purple-200">
-                    {t('contact.form.youtube') || 'YouTube видео (опционально)'}
+                    {t('contact.form.youtube')}
                   </FormLabel>
                   <FormControl>
                     <Input 
-                      placeholder={t('contact.form.youtubePlaceholder') || 'https://youtube.com/watch?v=...'}
+                      placeholder={t('contact.form.youtubePlaceholder')}
                       className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300"
                       {...field}
                     />
@@ -289,11 +289,11 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-purple-200">
-                    {t('contact.form.message') || 'Сообщение'}
+                    {t('contact.form.message')}
                   </FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder={t('contact.form.messagePlaceholder') || 'Расскажите о вашем проекте, целях и ожиданиях...'}
+                      placeholder={t('contact.form.messagePlaceholder')}
                       className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300 min-h-[80px]"
                       {...field}
                     />
@@ -310,7 +310,7 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white flex items-center justify-center gap-2"
               >
                 <FileText className="w-4 h-4" />
-                {t('contact.form.downloadPdf') || 'Скачать брошюру'}
+                {t('contact.form.downloadPdf')}
                 <ExternalLink className="w-4 h-4" />
               </Button>
               
@@ -321,13 +321,13 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                   onClick={() => setIsOpen(false)}
                   className="flex-1 border-purple-500/30 text-purple-200 hover:bg-purple-500/20"
                 >
-                  {t('contact.form.cancel') || 'Отмена'}
+                  {t('contact.form.cancel')}
                 </Button>
                 <Button
                   type="submit"
                   className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
                 >
-                  {t('contact.form.submit') || 'Отправить'}
+                  {t('contact.form.submit')}
                 </Button>
               </div>
             </div>
