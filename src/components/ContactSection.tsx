@@ -3,6 +3,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import ContactForm from './ContactForm';
+import ExpertConsultationForm from './ExpertConsultationForm';
 
 const ContactSection = () => {
   const { t } = useLanguage();
@@ -83,15 +84,27 @@ const ContactSection = () => {
             </div>
           </div>
           
-          <ContactForm>
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-12 py-4 text-xl font-bold rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-200 cursor-pointer relative group"
-            >
-              <span className="relative z-10">{t('contact.cta')}</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-            </Button>
-          </ContactForm>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <ExpertConsultationForm>
+              <Button 
+                size="lg"
+                className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-12 py-4 text-xl font-bold rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-200 cursor-pointer relative group"
+              >
+                <span className="relative z-10">{t('contact.cta')}</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-green-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              </Button>
+            </ExpertConsultationForm>
+
+            <ContactForm>
+              <Button 
+                size="lg"
+                variant="outline"
+                className="border-2 border-white/30 text-white hover:bg-white/10 px-12 py-4 text-xl font-bold rounded-xl backdrop-blur-sm transform hover:scale-105 transition-all duration-200 cursor-pointer"
+              >
+                Get Your Custom Quest
+              </Button>
+            </ContactForm>
+          </div>
         </div>
       </div>
     </section>
