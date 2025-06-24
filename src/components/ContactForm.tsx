@@ -6,8 +6,13 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Calendar } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useForm } from 'react-hook-form';
-import { ExternalLink, FileText } from 'lucide-react';
+import { ExternalLink, FileText, CalendarIcon, Clock } from 'lucide-react';
+import { format } from 'date-fns';
+import { cn } from '@/lib/utils';
 
 interface FormData {
   name: string;
@@ -16,6 +21,8 @@ interface FormData {
   company: string;
   message: string;
   youtubeUrl: string;
+  consultationDate: Date | undefined;
+  consultationTime: string;
 }
 
 const ContactForm = ({ children }: { children: React.ReactNode }) => {
@@ -29,9 +36,31 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
       phone: '',
       company: '',
       message: '',
-      youtubeUrl: ''
+      youtubeUrl: '',
+      consultationDate: undefined,
+      consultationTime: ''
     }
   });
+
+  // Generate time slots in 15-minute intervals
+  const generateTimeSlots = () => {
+    const slots = [];
+    for (let hour = 9; hour <= 18; hour++) {
+      for (let minute = 0; minute < 60; minute += 15) {
+        const time24 = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+        
+        // Convert to AM/PM format
+        const hour12 = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
+        const ampm = hour < 12 ? 'AM' : 'PM';
+        const time12 = `${hour12}:${minute.toString().padStart(2, '0')} ${ampm}`;
+        
+        slots.push({ value: time24, label: time12 });
+      }
+    }
+    return slots;
+  };
+
+  const timeSlots = generateTimeSlots();
 
   const onSubmit = (data: FormData) => {
     console.log('Contact form submitted:', data);
@@ -50,7 +79,7 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[500px] bg-gradient-to-br from-slate-900 to-purple-900 border-purple-500/20 max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[600px] bg-gradient-to-br from-slate-900 to-purple-900 border-purple-500/20 max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-white text-center mb-4">
             {t('contact.form.title') || 'Свяжитесь с нами'}
@@ -143,6 +172,91 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                         {...field}
                       />
                     </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            {/* Date and Time Selection */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="consultationDate"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel className="text-purple-200">
+                      {t('contact.form.date') || 'Дата консультации'}
+                    </FormLabel>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "w-full justify-start text-left font-normal bg-white/10 border-purple-500/30 text-white hover:bg-white/20",
+                              !field.value && "text-purple-300"
+                            )}
+                          >
+                            <CalendarIcon className="mr-2 h-4 w-4" />
+                            {field.value ? (
+                              format(field.value, "PPP")
+                            ) : (
+                              <span>{t('contact.form.selectDate') || 'Выберите дату'}</span>
+                            )}
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={field.value}
+                          onSelect={field.onChange}
+                          disabled={(date) =>
+                            date < new Date() || date < new Date("1900-01-01")
+                          }
+                          initialFocus
+                          className={cn("p-3 pointer-events-auto")}
+                        />
+                      </PopoverContent>
+                    </Popover>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="consultationTime"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-purple-200">
+                      {t('contact.form.time') || 'Время консультации'}
+                    </FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="bg-white/10 border-purple-500/30 text-white">
+                          <div className="flex items-center">
+                            <Clock className="mr-2 h-4 w-4" />
+                            <SelectValue 
+                              placeholder={t('contact.form.selectTime') || 'Выберите время'}
+                              className="text-purple-300"
+                            />
+                          </div>
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent className="bg-slate-800 border-purple-500/30">
+                        {timeSlots.map((slot) => (
+                          <SelectItem 
+                            key={slot.value} 
+                            value={slot.value}
+                            className="text-white hover:bg-purple-500/20 focus:bg-purple-500/20"
+                          >
+                            {slot.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
