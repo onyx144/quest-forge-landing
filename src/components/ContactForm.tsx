@@ -205,13 +205,13 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                   type="button"
                   variant="outline"
                   onClick={() => setIsOpen(false)}
-                  className="flex-1 border-purple-500/30 text-purple-200 hover:bg-purple-500/20"
+                  className="flex-1 border-purple-500/30 text-purple-200 bg-purple-500/20 hover:bg-purple-500/20 hover:text-white"
                 >
                   {t('contact.form.cancel') || 'Отмена'}
                 </Button>
                 <Button
                   type="submit"
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                  className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white hover:text-white"
                 >
                   {t('contact.form.submit') || 'Отправить'}
                 </Button>

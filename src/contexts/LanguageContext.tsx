@@ -99,7 +99,21 @@ const translations = {
     "contact.form.messagePlaceholder": "Tell us what kind of quest you want and your business goals",
     "contact.form.downloadPdf": "Download Presentation",
     "contact.form.cancel": "Cancel",
-    "contact.form.submit": "Send Request"
+    "contact.form.submit": "Send Request",
+
+    // Consultation Form
+    "consultation.form.title": "Talk to an Expert",
+    "consultation.form.subtitle": "Schedule a personalized consultation with our quest development expert. We'll discuss your vision and help you create an amazing experience.",
+    "consultation.form.email": "Your Email Address",
+    "consultation.form.emailPlaceholder": "expert@yourcompany.com",
+    "consultation.form.date": "Consultation Date",
+    "consultation.form.datePlaceholder": "Select date",
+    "consultation.form.time": "Preferred Time",
+    "consultation.form.timePlaceholder": "Select time",
+    "consultation.form.additional": "Additional Information",
+    "consultation.form.additionalPlaceholder": "Tell us about your project, goals, or any specific questions you have...",
+    "consultation.form.cancel": "Cancel",
+    "consultation.form.submit": "Schedule Consultation"
   },
   uk: {
     // Navigation
@@ -194,7 +208,21 @@ const translations = {
     "contact.form.messagePlaceholder": "Опишіть бажаний квест і бізнес-цілі",
     "contact.form.downloadPdf": "Завантажити презентацію",
     "contact.form.cancel": "Скасувати",
-    "contact.form.submit": "Відправити запит"
+    "contact.form.submit": "Відправити запит",
+
+    // Consultation Form
+    "consultation.form.title": "Поспілкуватися з експертом",
+    "consultation.form.subtitle": "Заплануйте персональну консультацію з нашим експертом з розробки квестів. Обговоримо вашу ідею та допоможемо створити унікальний досвід.",
+    "consultation.form.email": "Ваша електронна пошта",
+    "consultation.form.emailPlaceholder": "expert@yourcompany.com",
+    "consultation.form.date": "Дата консультації",
+    "consultation.form.datePlaceholder": "Оберіть дату",
+    "consultation.form.time": "Бажаний час",
+    "consultation.form.timePlaceholder": "Оберіть час",
+    "consultation.form.additional": "Додаткова інформація",
+    "consultation.form.additionalPlaceholder": "Розкажіть про ваш проєкт, цілі чи питання...",
+    "consultation.form.cancel": "Скасувати",
+    "consultation.form.submit": "Запланувати консультацію"
   }
 };
 

@@ -14,7 +14,7 @@ const Navigation = () => {
           <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-xl">Q</span>
           </div>
-          <span className="text-white font-bold text-xl">QuestCraft</span>
+          <span className="text-white font-bold text-xl">Questalize</span>
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
