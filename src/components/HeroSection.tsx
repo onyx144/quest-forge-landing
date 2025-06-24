@@ -46,7 +46,7 @@ const HeroSection = () => {
               size="lg"
               variant="outline"
               onClick={scrollToDemo}
-              className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg font-bold rounded-xl backdrop-blur-sm transform hover:scale-105 transition-all duration-200 cursor-pointer"
+              className="border-2 border-white/30 text-black hover:text-white hover:bg-white/10 px-8 py-4 text-lg font-bold rounded-xl backdrop-blur-sm transform hover:scale-105 transition-all duration-200 cursor-pointer"
             >
               {t('hero.demo')}
             </Button>

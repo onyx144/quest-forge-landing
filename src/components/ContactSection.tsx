@@ -24,11 +24,18 @@ const ContactSection = () => {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer group animate-scale-in">
-              <div className="text-4xl mb-4 group-hover:animate-bounce">📞</div>
-              <h3 className="text-lg font-bold text-white mb-2">{t('contact.phone')}</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors">+1 (555) 123-4567</p>
-            </div>
+            <a
+              href="https://t.me/questcraft_support"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer group animate-scale-in block"
+            >
+              <div className="text-4xl mb-4 group-hover:animate-bounce">💬</div>
+              <h3 className="text-lg font-bold text-white mb-2">
+                {t('contact.phone')} &nbsp;
+                <span className="text-xs text-gray-400">(Telegram)</span>
+              </h3>
+            </a>
             
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer group animate-scale-in">
               <div className="text-4xl mb-4 group-hover:animate-pulse">✉️</div>
@@ -38,8 +45,8 @@ const ContactSection = () => {
             
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer group animate-scale-in">
               <div className="text-4xl mb-4 group-hover:animate-spin">🚀</div>
-              <h3 className="text-lg font-bold text-white mb-2">Launch Time</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors">2-4 weeks</p>
+              <h3 className="text-lg font-bold text-white mb-2">{t('contact.launch')}</h3>
+              <p className="text-gray-400 group-hover:text-gray-300 transition-colors">4-6 weeks</p>
             </div>
           </div>
           
