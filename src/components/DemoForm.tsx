@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -7,7 +6,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
-import { X } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
+import { sendDemoForm } from '@/lib/service';
 
 interface FormData {
   name: string;
@@ -18,20 +19,34 @@ interface FormData {
 const DemoForm = ({ children }: { children: React.ReactNode }) => {
   const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<FormData>({
     defaultValues: {
       name: '',
       email: '',
       message: ''
-    }
+    },
+    mode: 'onBlur',
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log('Form submitted:', data);
-    // Здесь будет логика отправки формы
-    setIsOpen(false);
-    form.reset();
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    try {
+      const result = await sendDemoForm(data);
+      if (result.success) {
+        toast.success(t('demo.form.success'));
+        setIsOpen(false);
+        form.reset();
+      } else {
+        toast.error(result.message || 'There was an error sending your message');
+      }
+    } catch (error) {
+      console.error('Ошибка отправки формы:', error);
+      toast.error('There was an error sending your message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -51,6 +66,7 @@ const DemoForm = ({ children }: { children: React.ReactNode }) => {
             <FormField
               control={form.control}
               name="name"
+              rules={{ required: t('consultation.form.error.name') }}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-purple-200">
@@ -71,6 +87,13 @@ const DemoForm = ({ children }: { children: React.ReactNode }) => {
             <FormField
               control={form.control}
               name="email"
+              rules={{
+                required: t('consultation.form.error.email'),
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: t('consultation.form.error.emailInvalid'),
+                },
+              }}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-purple-200">
@@ -92,6 +115,7 @@ const DemoForm = ({ children }: { children: React.ReactNode }) => {
             <FormField
               control={form.control}
               name="message"
+              rules={{ required: t('consultation.form.error.massage') }}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-purple-200">
@@ -120,9 +144,17 @@ const DemoForm = ({ children }: { children: React.ReactNode }) => {
               </Button>
               <Button
                 type="submit"
+                disabled={isSubmitting}
                 className="flex-1 bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white"
               >
-                {t('demo.form.submit') || 'Отправить'}
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    {t('contact.form.sending') || 'Отправка...'}
+                  </>
+                ) : (
+                  t('demo.form.submit') || 'Отправить'
+                )}
               </Button>
             </div>
           </form>

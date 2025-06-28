@@ -3,6 +3,8 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import LanguageToggle from './LanguageToggle';
+import ContactForm from './ContactForm';
+
 
 const Navigation = () => {
   const { t } = useLanguage();
@@ -24,12 +26,14 @@ const Navigation = () => {
         
         <div className="flex items-center space-x-4">
           <LanguageToggle />
+          <ContactForm>
           <Button 
             size="sm"
             className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transform transition-all duration-200 hover:scale-105"
           >
             {t('nav.contact')}
           </Button>
+          </ContactForm>
         </div>
       </div>
     </nav>

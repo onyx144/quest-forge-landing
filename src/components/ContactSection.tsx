@@ -35,7 +35,7 @@ const ContactSection = () => {
               <div className="flex justify-center gap-4 mb-6">
               {/* Telegram */}
               <a 
-                href="https://t.me/your_telegram" 
+                href="https://t.me/nikitaonys" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-blue-500 to-blue-600 w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200"

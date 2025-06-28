@@ -73,6 +73,7 @@ const translations = {
     "demo.form.messagePlaceholder": "What does your company do?",
     "demo.form.cancel": "Cancel",
     "demo.form.submit": "Request Demo",
+    "demo.form.success": "Demo request sent successfully!",
 
     // Contact
     "contact.title": "Let's Create Your Quest",
@@ -100,7 +101,8 @@ const translations = {
     "contact.form.downloadPdf": "Download Presentation",
     "contact.form.cancel": "Cancel",
     "contact.form.submit": "Send Request",
-
+    "contact.form.sending": "Sending...",
+    "contact.form.success": "Message sent successfully!",
     // Consultation Form
     "consultation.form.title": "Talk to an Expert",
     "consultation.form.subtitle": "Schedule a personalized consultation with our quest development expert. We'll discuss your vision and help you create an amazing experience.",
@@ -113,7 +115,17 @@ const translations = {
     "consultation.form.additional": "Additional Information",
     "consultation.form.additionalPlaceholder": "Tell us about your project, goals, or any specific questions you have...",
     "consultation.form.cancel": "Cancel",
-    "consultation.form.submit": "Schedule Consultation"
+    "consultation.form.submit": "Schedule Consultation",
+    "consultation.form.error.name": "Name is required",
+    "consultation.form.error.massage": "Message is required",
+
+    "consultation.form.error.email": "Email is required",
+    "consultation.form.error.emailInvalid": "Invalid email address",
+    "consultation.form.error.date": "Date is required",
+    "consultation.form.error.time": "Time is required",
+    "consultation.form.name": "Full Name",
+    "consultation.form.success": "The request for consultation has been successfully submitted!",
+
   },
   uk: {
     // Navigation
@@ -125,6 +137,7 @@ const translations = {
     "hero.subtitle": "Залучайте аудиторію, просувайте бренд і створюйте незабутні цифрові враження",
     "hero.cta": "Створити мій квест",
     "hero.demo": "Спробувати демо зараз",
+    "consultation.form.error.massage": "Повідомлення обов'язкове",
 
     // What We Offer
     "offer.title": "Що ми пропонуємо",
@@ -182,6 +195,7 @@ const translations = {
     "demo.form.messagePlaceholder": "Чим займається ваша компанія?",
     "demo.form.cancel": "Скасувати",
     "demo.form.submit": "Запросити демо",
+    "demo.form.success": "Запит на демо успішно надіслано!",
 
     // Contact
     "contact.title": "Створимо ваш квест",
@@ -209,8 +223,10 @@ const translations = {
     "contact.form.downloadPdf": "Завантажити презентацію",
     "contact.form.cancel": "Скасувати",
     "contact.form.submit": "Відправити запит",
-
+    "contact.form.sending": "Отправка...",
+    "contact.form.success": "Повідомлення успішно надіслано!",
     // Consultation Form
+    "consultation.form.success": "Запит на консультацію успішно надіслано!",
     "consultation.form.title": "Поспілкуватися з експертом",
     "consultation.form.subtitle": "Заплануйте персональну консультацію з нашим експертом з розробки квестів. Обговоримо вашу ідею та допоможемо створити унікальний досвід.",
     "consultation.form.email": "Ваша електронна пошта",
@@ -222,7 +238,13 @@ const translations = {
     "consultation.form.additional": "Додаткова інформація",
     "consultation.form.additionalPlaceholder": "Розкажіть про ваш проєкт, цілі чи питання...",
     "consultation.form.cancel": "Скасувати",
-    "consultation.form.submit": "Запланувати консультацію"
+    "consultation.form.submit": "Запланувати консультацію",
+    "consultation.form.error.name": "Ім'я обов'язкове",
+    "consultation.form.error.email": "Email обов'язковий",
+    "consultation.form.error.emailInvalid": "Некоректний email",
+    "consultation.form.error.date": "Дата обов'язкова",
+    "consultation.form.error.time": "Час обов'язковий",
+    "consultation.form.name": "ФІО",
   }
 };
 

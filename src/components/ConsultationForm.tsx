@@ -9,11 +9,14 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useForm } from 'react-hook-form';
-import { CalendarIcon, Clock } from 'lucide-react';
+import { CalendarIcon, Clock, Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { sendConsoltationForm } from '@/lib/service';
+import { toast } from 'sonner';
 
 interface ExpertFormData {
+  name: string;
   email: string;
   consultationDate: Date | undefined;
   consultationTime: string;
@@ -21,16 +24,19 @@ interface ExpertFormData {
 }
 
 const ConsultationForm = ({ children }: { children: React.ReactNode }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<ExpertFormData>({
     defaultValues: {
+      name: '',
       email: '',
       consultationDate: undefined,
       consultationTime: '',
       additionalInfo: ''
-    }
+    },
+    mode: 'onBlur',
   });
 
   // Generate time slots in 15-minute intervals
@@ -53,11 +59,23 @@ const ConsultationForm = ({ children }: { children: React.ReactNode }) => {
 
   const timeSlots = generateTimeSlots();
 
-  const onSubmit = (data: ExpertFormData) => {
-    console.log('Expert consultation form submitted:', data);
-    // Здесь будет логика отправки формы для консультации с экспертом
-    setIsOpen(false);
-    form.reset();
+  const onSubmit = async (data: ExpertFormData) => {
+    setIsSubmitting(true);
+    try {
+      const result = await sendConsoltationForm(data);
+      if (result.success) {
+        toast.success(t('consultation.form.success'));
+        setIsOpen(false);
+        form.reset();
+      } else {\
+        toast.error(result.message || 'There was an error sending your message');
+      }
+    } catch (error) {
+      console.error('Ошибка отправки формы:', error);
+      toast.error('There was an error sending your message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -82,6 +100,13 @@ const ConsultationForm = ({ children }: { children: React.ReactNode }) => {
             <FormField
               control={form.control}
               name="email"
+              rules={{
+                required: t('consultation.form.error.email'),
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: t('consultation.form.error.emailInvalid'),
+                },
+              }}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-emerald-200 text-lg font-semibold">
@@ -99,12 +124,33 @@ const ConsultationForm = ({ children }: { children: React.ReactNode }) => {
                 </FormItem>
               )}
             />
-
+    <FormField
+              control={form.control}
+              name="name"
+              rules={{ required: t('consultation.form.error.name') }}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-emerald-200 text-lg font-semibold">
+                    {t('consultation.form.name') || 'Name'}
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder={'Adam Adamov'}
+                      className="bg-white/10 border-emerald-500/30 text-white placeholder:text-emerald-300 h-12 text-lg"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             {/* Date and Time Selection */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              
               <FormField
                 control={form.control}
                 name="consultationDate"
+                rules={{ required: t('consultation.form.error.date') }}
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel className="text-emerald-200 text-lg font-semibold">
@@ -150,6 +196,7 @@ const ConsultationForm = ({ children }: { children: React.ReactNode }) => {
               <FormField
                 control={form.control}
                 name="consultationTime"
+                rules={{ required: t('consultation.form.error.time') }}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-emerald-200 text-lg font-semibold">
@@ -185,6 +232,8 @@ const ConsultationForm = ({ children }: { children: React.ReactNode }) => {
               />
             </div>
             
+        
+            
             <FormField
               control={form.control}
               name="additionalInfo"
@@ -217,9 +266,17 @@ const ConsultationForm = ({ children }: { children: React.ReactNode }) => {
               </Button>
               <Button
                 type="submit"
+                disabled={isSubmitting}
                 className="flex-1 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white h-12 font-bold"
               >
-                🚀 {t('consultation.form.submit')}
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    {t('contact.form.sending') || 'Отправка...'}
+                  </>
+                ) : (
+                  <>🚀 {t('consultation.form.submit')}</>
+                )}
               </Button>
             </div>
           </form>

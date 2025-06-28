@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -7,7 +6,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
-import { ExternalLink, FileText } from 'lucide-react';
+import { ExternalLink, FileText, Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
+import { sendContactForm } from '@/lib/service';
 
 interface FormData {
   name: string;
@@ -18,9 +19,24 @@ interface FormData {
   youtubeUrl: string;
 }
 
+const errorMessages = {
+  en: {
+    name: 'Name is required',
+    email: 'Email is required',
+    emailInvalid: 'Invalid email address',
+    message: 'Message is required',
+  },
+  ua: {
+    name: 'Імʼя обовʼязкове',
+    email: 'Email обовʼязковий',
+    emailInvalid: 'Некоректний email',
+    message: 'Повідомлення обовʼязкове',
+  },
+};
+
 const ContactForm = ({ children }: { children: React.ReactNode }) => {
-  const { t } = useLanguage();
-  const [isOpen, setIsOpen] = useState(false);
+  const { t, language } = useLanguage();  const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<FormData>({
     defaultValues: {
@@ -30,19 +46,34 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
       company: '',
       message: '',
       youtubeUrl: ''
-    }
+    },
+    mode: 'onBlur',
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log('Contact form submitted:', data);
-    // Здесь будет логика отправки формы
-    setIsOpen(false);
-    form.reset();
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    
+    try {
+      const result = await sendContactForm(data);
+
+      if (result.success) {
+        toast.success(t('contact.form.success'));
+        setIsOpen(false);
+        form.reset();
+      } else {
+        toast.error(result.message || 'There was an error sending your message');
+      }
+    } catch (error) {
+      console.error('Ошибка отправки формы:', error);
+      toast.error('There was an error sending your message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const openPDF = () => {
     // Замените на реальную ссылку на PDF
-    window.open('/path/to/your/document.pdf', '_blank');
+    window.open('/What-We-Offer.pdf', '_blank');
   };
 
   return (
@@ -68,6 +99,7 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
               <FormField
                 control={form.control}
                 name="name"
+                rules={{ required: errorMessages[language]?.name || errorMessages.en.name }}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-purple-200">
@@ -88,6 +120,13 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
               <FormField
                 control={form.control}
                 name="email"
+                rules={{ 
+                  required: errorMessages[language]?.email || errorMessages.en.email,
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: errorMessages[language]?.emailInvalid || errorMessages.en.emailInvalid,
+                  },
+                }}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-purple-200">
@@ -172,6 +211,7 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
             <FormField
               control={form.control}
               name="message"
+              rules={{ required: errorMessages[language]?.message || errorMessages.en.message }}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-purple-200">
@@ -205,15 +245,24 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                   type="button"
                   variant="outline"
                   onClick={() => setIsOpen(false)}
+                  disabled={isSubmitting}
                   className="flex-1 border-purple-500/30 text-purple-200 bg-purple-500/20 hover:bg-purple-500/20 hover:text-white"
                 >
                   {t('contact.form.cancel') || 'Отмена'}
                 </Button>
                 <Button
                   type="submit"
+                  disabled={isSubmitting}
                   className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white hover:text-white"
                 >
-                  {t('contact.form.submit') || 'Отправить'}
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      {t('contact.form.sending') || 'Отправка...'}
+                    </>
+                  ) : (
+                    t('contact.form.submit') || 'Отправить'
+                  )}
                 </Button>
               </div>
             </div>
