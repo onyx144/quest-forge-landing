@@ -20,8 +20,8 @@ const translations = {
     // Quest Info Section
     "quest.title": "What Is a Digital Quest?",
     "quest.subtitle": "A story-based online experience where players solve puzzles and uncover clues — just like in an escape room, but entirely in the browser.",
-    "quest.interactive.title": "Interactive Story",
-    "quest.interactive.desc": "Players become part of a fictional mission — investigating a conspiracy, escaping a hostile situation, or exposing a hidden threat.",
+    "quest.interactive.title": "Team Competition",
+    "quest.interactive.desc": "Players unite in teams, compete simultaneously against other groups, and climb the shared leaderboard.",
     "quest.multimedia.title": "Multimedia Clues",
     "quest.multimedia.desc": "They explore videos, images, and documents that hold hidden information and logic puzzles. Each quest includes interactive tools — from ID scanners to fake websites — designed to deepen immersion.",
     "quest.browser.title": "Browser-Based Interface",
@@ -157,8 +157,8 @@ const translations = {
     // Quest Info Section
     "quest.title": "Що таке цифровий квест?",
     "quest.subtitle": "Онлайн-досвід на основі історії, де гравці розгадують загадки та знаходять підказки — як у кімнаті втечі, але повністю в браузері.",
-    "quest.interactive.title": "Інтерактивна історія",
-    "quest.interactive.desc": "Гравці стають частиною вигаданої місії — розслідують змову, втікають з небезпечної ситуації або викривають приховану загрозу.",
+    "quest.interactive.title": "Командне змагання",
+    "quest.interactive.desc": "Гравці об'єднуються в команди, змагаються одночасно з іншими групами та піднімаються у спільному рейтингу.",
     "quest.multimedia.title": "Мультимедійні підказки",
     "quest.multimedia.desc": "Вони досліджують відео, зображення та документи, які містять приховану інформацію та логічні головоломки. Кожен квест включає інтерактивні інструменти — від сканерів ID до фальшивих веб-сайтів — для поглиблення занурення.",
     "quest.browser.title": "Браузерний інтерфейс",

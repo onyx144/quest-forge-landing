@@ -30,7 +30,7 @@ const QuestInfoSection = () => {
             </p>
             <div className="h-48 bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
               <img 
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=200&fit=crop" 
+                src="/public/images/todays_result.png" 
                 alt="Interactive Story" 
                 className="w-full h-full object-cover rounded-lg"
               />
@@ -62,7 +62,7 @@ const QuestInfoSection = () => {
             </p>
             <div className="h-48 bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
               <img 
-                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=200&fit=crop" 
+                src="/public/images/dashboard.png" 
                 alt="Browser Interface" 
                 className="w-full h-full object-cover rounded-lg"
               />
@@ -78,7 +78,7 @@ const QuestInfoSection = () => {
             </p>
             <div className="h-48 bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
               <img 
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&fit=crop" 
+                src="/public/images/car.png" 
                 alt="Puzzle Solving" 
                 className="w-full h-full object-cover rounded-lg"
               />
