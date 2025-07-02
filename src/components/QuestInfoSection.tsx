@@ -1,83 +1,144 @@
+
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from '@/components/ui/button';
-import { FileText, ExternalLink, Play } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 const QuestInfoSection = () => {
   const { t } = useLanguage();
 
-  const openPDF = () => {
-    // Замените на реальную ссылку на PDF
-    window.open('/path/to/your/presentation.pdf', '_blank');
-  };
-
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-purple-900 relative overflow-hidden">
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-500/20 rounded-full animate-bounce"></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Main Headers */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
-            Узнайте больше о наших квестах
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            What Is a Digital Quest?
           </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto animate-fade-in">
-            Посмотрите презентацию и ознакомительное видео, чтобы лучше понять возможности наших интерактивных онлайн-квестов
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            A story-based online experience where players solve puzzles and uncover clues — just like in an escape room, but entirely in the browser.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Презентация */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 animate-scale-in">
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-blue-500 to-purple-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <FileText className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Презентация проекта
-              </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                Подробная презентация с примерами работ, статистикой эффективности и вариантами реализации квестов для различных индустрий.
-              </p>
-              <Button
-                onClick={openPDF}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white flex items-center justify-center gap-2 w-full"
-              >
-                <FileText className="w-5 h-5" />
-                Скачать презентацию
-                <ExternalLink className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-
-          {/* Видео */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 animate-scale-in">
-            <div className="text-center mb-6">
-              <div className="bg-gradient-to-r from-red-500 to-pink-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Play className="w-10 h-10 text-white ml-1" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Ознакомительное видео
-              </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                Посмотрите, как работают наши квесты на практике и какие возможности они открывают для вашего бизнеса.
-              </p>
-            </div>
-            
-            {/* YouTube видео */}
-            <div className="relative aspect-video rounded-xl overflow-hidden bg-black/20 border border-white/10">
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Quest Demo Video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+        {/* Info Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {/* Interactive Story */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div className="text-4xl mb-4">🧩</div>
+            <h3 className="text-2xl font-bold text-white mb-4">Interactive Story</h3>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              Players become part of a fictional mission — investigating a conspiracy, escaping a hostile situation, or exposing a hidden threat.
+            </p>
+            <div className="h-48 bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
+              <img 
+                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=200&fit=crop" 
+                alt="Interactive Story" 
+                className="w-full h-full object-cover rounded-lg"
               />
             </div>
           </div>
+
+          {/* Multimedia Clues */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div className="text-4xl mb-4">📂</div>
+            <h3 className="text-2xl font-bold text-white mb-4">Multimedia Clues</h3>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              They explore videos, images, and documents that hold hidden information and logic puzzles. Each quest includes interactive tools — from ID scanners to fake websites — designed to deepen immersion.
+            </p>
+            <div className="h-48 bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
+              <img 
+                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop" 
+                alt="Multimedia Clues" 
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
+          </div>
+
+          {/* Browser-Based Interface */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div className="text-4xl mb-4">🖥</div>
+            <h3 className="text-2xl font-bold text-white mb-4">Browser-Based Interface</h3>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              No downloads needed — everything happens in a special web environment built like a real investigation dashboard.
+            </p>
+            <div className="h-48 bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
+              <img 
+                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=200&fit=crop" 
+                alt="Browser Interface" 
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
+          </div>
+
+          {/* Puzzle-Solving Gameplay */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div className="text-4xl mb-4">🕵️</div>
+            <h3 className="text-2xl font-bold text-white mb-4">Puzzle-Solving Gameplay</h3>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              Just like in a physical escape room, players find connections, break codes, and move the story forward step by step.
+            </p>
+            <div className="h-48 bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
+              <img 
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&fit=crop" 
+                alt="Puzzle Solving" 
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Image Slider */}
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">Quest Examples</h3>
+          <Carousel className="w-full">
+            <CarouselContent>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <div className="h-64 bg-gray-800/50 rounded-lg overflow-hidden border border-gray-700">
+                    <img 
+                      src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=300&h=250&fit=crop" 
+                      alt="Quest Example 1" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <div className="h-64 bg-gray-800/50 rounded-lg overflow-hidden border border-gray-700">
+                    <img 
+                      src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=300&h=250&fit=crop" 
+                      alt="Quest Example 2" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <div className="h-64 bg-gray-800/50 rounded-lg overflow-hidden border border-gray-700">
+                    <img 
+                      src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=250&fit=crop" 
+                      alt="Quest Example 3" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <div className="h-64 bg-gray-800/50 rounded-lg overflow-hidden border border-gray-700">
+                    <img 
+                      src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&h=250&fit=crop" 
+                      alt="Quest Example 4" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </CarouselItem>
+            </CarouselContent>
+            <CarouselPrevious className="bg-white/10 border-white/20 text-white hover:bg-white/20" />
+            <CarouselNext className="bg-white/10 border-white/20 text-white hover:bg-white/20" />
+          </Carousel>
         </div>
       </div>
     </section>

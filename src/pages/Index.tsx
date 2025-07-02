@@ -3,7 +3,7 @@ import React from 'react';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
-import OfferSection from '@/components/OfferSection';
+import QuestInfoSection from '@/components/QuestInfoSection';
 import ProfitSection from '@/components/ProfitSection';
 import ProcessSection from '@/components/ProcessSection';
 import DemoSection from '@/components/DemoSection';
@@ -15,7 +15,7 @@ const Index = () => {
       <div className="min-h-screen">
         <Navigation />
         <HeroSection />
-        <OfferSection />
+        <QuestInfoSection />
         <ProfitSection />
         <ProcessSection />
         <DemoSection />
