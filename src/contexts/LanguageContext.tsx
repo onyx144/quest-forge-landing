@@ -17,6 +17,19 @@ const translations = {
     "hero.cta": "Create My Quest",
     "hero.demo": "Try Demo Now",
 
+    // Quest Info Section
+    "quest.title": "What Is a Digital Quest?",
+    "quest.subtitle": "A story-based online experience where players solve puzzles and uncover clues — just like in an escape room, but entirely in the browser.",
+    "quest.interactive.title": "Interactive Story",
+    "quest.interactive.desc": "Players become part of a fictional mission — investigating a conspiracy, escaping a hostile situation, or exposing a hidden threat.",
+    "quest.multimedia.title": "Multimedia Clues",
+    "quest.multimedia.desc": "They explore videos, images, and documents that hold hidden information and logic puzzles. Each quest includes interactive tools — from ID scanners to fake websites — designed to deepen immersion.",
+    "quest.browser.title": "Browser-Based Interface",
+    "quest.browser.desc": "No downloads needed — everything happens in a special web environment built like a real investigation dashboard.",
+    "quest.puzzle.title": "Puzzle-Solving Gameplay",
+    "quest.puzzle.desc": "Just like in a physical escape room, players find connections, break codes, and move the story forward step by step.",
+    "quest.examples": "Quest Examples",
+
     // What We Offer
     "offer.title": "What We Offer",
     "offer.subtitle": "Fully customized online escape quests for business goals and engagement",
@@ -29,7 +42,6 @@ const translations = {
     "offer.events.title": "Virtual Events",
     "offer.events.desc": "Host unique and memorable celebrations with a digital twist",
 
-    // Why Profitable
     "profit.title": "Why It's Profitable",
     "profit.subtitle": "Low cost, high impact — built for scale",
     "profit.lowcost.title": "Minimal Costs",
@@ -141,6 +153,19 @@ const translations = {
     "hero.subtitle": "Залучайте аудиторію, просувайте бренд і створюйте незабутні цифрові враження",
     "hero.cta": "Створити мій квест",
     "hero.demo": "Спробувати демо зараз",
+
+    // Quest Info Section
+    "quest.title": "Що таке цифровий квест?",
+    "quest.subtitle": "Онлайн-досвід на основі історії, де гравці розгадують загадки та знаходять підказки — як у кімнаті втечі, але повністю в браузері.",
+    "quest.interactive.title": "Інтерактивна історія",
+    "quest.interactive.desc": "Гравці стають частиною вигаданої місії — розслідують змову, втікають з небезпечної ситуації або викривають приховану загрозу.",
+    "quest.multimedia.title": "Мультимедійні підказки",
+    "quest.multimedia.desc": "Вони досліджують відео, зображення та документи, які містять приховану інформацію та логічні головоломки. Кожен квест включає інтерактивні інструменти — від сканерів ID до фальшивих веб-сайтів — для поглиблення занурення.",
+    "quest.browser.title": "Браузерний інтерфейс",
+    "quest.browser.desc": "Не потрібно завантажувати — все відбувається в спеціальному веб-середовищі, побудованому як справжня панель розслідування.",
+    "quest.puzzle.title": "Геймплей розгадування головоломок",
+    "quest.puzzle.desc": "Як і в фізичній кімнаті втечі, гравці знаходять зв'язки, розшифровують коди та просувають історію крок за кроком.",
+    "quest.examples": "Приклади квестів",
     "consultation.form.error.massage": "Повідомлення обов'язкове",
 
     // What We Offer
@@ -155,7 +180,6 @@ const translations = {
     "offer.events.title": "Віртуальні події",
     "offer.events.desc": "Проводьте унікальні та незабутні святкування у цифровому форматі",
 
-    // Why Profitable
     "profit.title": "Чому це вигідно",
     "profit.subtitle": "Низькі витрати, великий ефект — створено для масштабування",
     "profit.lowcost.title": "Мінімальні витрати",

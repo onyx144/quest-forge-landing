@@ -12,10 +12,10 @@ const QuestInfoSection = () => {
         {/* Main Headers */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            What Is a Digital Quest?
+            {t('quest.title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            A story-based online experience where players solve puzzles and uncover clues — just like in an escape room, but entirely in the browser.
+            {t('quest.subtitle')}
           </p>
         </div>
 
@@ -24,9 +24,9 @@ const QuestInfoSection = () => {
           {/* Interactive Story */}
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="text-4xl mb-4">🧩</div>
-            <h3 className="text-2xl font-bold text-white mb-4">Interactive Story</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">{t('quest.interactive.title')}</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Players become part of a fictional mission — investigating a conspiracy, escaping a hostile situation, or exposing a hidden threat.
+              {t('quest.interactive.desc')}
             </p>
             <div className="h-48 bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
               <img 
@@ -40,9 +40,9 @@ const QuestInfoSection = () => {
           {/* Multimedia Clues */}
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="text-4xl mb-4">📂</div>
-            <h3 className="text-2xl font-bold text-white mb-4">Multimedia Clues</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">{t('quest.multimedia.title')}</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              They explore videos, images, and documents that hold hidden information and logic puzzles. Each quest includes interactive tools — from ID scanners to fake websites — designed to deepen immersion.
+              {t('quest.multimedia.desc')}
             </p>
             <div className="h-48 bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
               <img 
@@ -56,9 +56,9 @@ const QuestInfoSection = () => {
           {/* Browser-Based Interface */}
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="text-4xl mb-4">🖥</div>
-            <h3 className="text-2xl font-bold text-white mb-4">Browser-Based Interface</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">{t('quest.browser.title')}</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              No downloads needed — everything happens in a special web environment built like a real investigation dashboard.
+              {t('quest.browser.desc')}
             </p>
             <div className="h-48 bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
               <img 
@@ -72,9 +72,9 @@ const QuestInfoSection = () => {
           {/* Puzzle-Solving Gameplay */}
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="text-4xl mb-4">🕵️</div>
-            <h3 className="text-2xl font-bold text-white mb-4">Puzzle-Solving Gameplay</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">{t('quest.puzzle.title')}</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Just like in a physical escape room, players find connections, break codes, and move the story forward step by step.
+              {t('quest.puzzle.desc')}
             </p>
             <div className="h-48 bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
               <img 
@@ -88,7 +88,7 @@ const QuestInfoSection = () => {
 
         {/* Image Slider */}
         <div className="max-w-4xl mx-auto">
-          <h3 className="text-2xl font-bold text-white mb-8 text-center">Quest Examples</h3>
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">{t('quest.examples')}</h3>
           <Carousel className="w-full">
             <CarouselContent>
               <CarouselItem className="md:basis-1/2 lg:basis-1/3">
