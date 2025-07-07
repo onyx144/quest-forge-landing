@@ -21,7 +21,7 @@ const QuestInfoSection = () => {
 
         {/* Info Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {/* Interactive Story */}
+          {/* Interactive Storys*/}
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <div className="text-4xl mb-4">🧩</div>
             <h3 className="text-2xl font-bold text-white mb-4">{t('quest.interactive.title')}</h3>
