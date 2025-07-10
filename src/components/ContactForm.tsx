@@ -5,11 +5,10 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Calendar } from '@/components/ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useForm } from 'react-hook-form';
-import { ExternalLink, FileText } from 'lucide-react';
+import { ExternalLink, FileText, Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
+import { sendContactForm } from '@/lib/service';
 
 interface FormData {
   name: string;
@@ -18,8 +17,6 @@ interface FormData {
   company: string;
   message: string;
   youtubeUrl: string;
-  consultationDate: Date | undefined;
-  consultationTime: string;
 }
 
 const errorMessages = {
@@ -49,28 +46,9 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
       company: '',
       message: '',
       youtubeUrl: ''
-    }
+    },
+    mode: 'onBlur',
   });
-
-  // Generate time slots in 15-minute intervals
-  const generateTimeSlots = () => {
-    const slots = [];
-    for (let hour = 9; hour <= 18; hour++) {
-      for (let minute = 0; minute < 60; minute += 15) {
-        const time24 = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-        
-        // Convert to AM/PM format
-        const hour12 = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
-        const ampm = hour < 12 ? 'AM' : 'PM';
-        const time12 = `${hour12}:${minute.toString().padStart(2, '0')} ${ampm}`;
-        
-        slots.push({ value: time24, label: time12 });
-      }
-    }
-    return slots;
-  };
-
-  const timeSlots = generateTimeSlots();
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
@@ -103,14 +81,14 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px] bg-gradient-to-br from-slate-900 to-purple-900 border-purple-500/20 max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[500px] bg-gradient-to-br from-slate-900 to-purple-900 border-purple-500/20 max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-white text-center mb-4">
-            {t('contact.form.title')}
+            {t('contact.form.title') || 'Свяжитесь с нами'}
           </DialogTitle>
           <div className="text-purple-200 text-sm leading-relaxed">
             <p className="mb-3">
-              {t('contact.form.description')}
+              {t('contact.form.description') || 'Свяжитесь с нами для заказа индивидуального квеста и получения кода на демо-версию игры. Наша команда поможет создать уникальный игровой опыт для вашего бизнеса.'}
             </p>
           </div>
         </DialogHeader>
@@ -125,11 +103,11 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-purple-200">
-                      {t('contact.form.name')}
+                      {t('contact.form.name') || 'Имя'}
                     </FormLabel>
                     <FormControl>
                       <Input 
-                        placeholder={t('contact.form.namePlaceholder')}
+                        placeholder={t('contact.form.namePlaceholder') || 'Ваше имя'}
                         className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300"
                         {...field}
                       />
@@ -152,12 +130,12 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-purple-200">
-                      {t('contact.form.email')}
+                      {t('contact.form.email') || 'Email'}
                     </FormLabel>
                     <FormControl>
                       <Input 
                         type="email"
-                        placeholder={t('contact.form.emailPlaceholder')}
+                        placeholder={t('contact.form.emailPlaceholder') || 'your@email.com'}
                         className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300"
                         {...field}
                       />
@@ -175,11 +153,11 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-purple-200">
-                      {t('contact.form.phone')}
+                      {t('contact.form.phone') || 'Телефон'}
                     </FormLabel>
                     <FormControl>
                       <Input 
-                        placeholder={t('contact.form.phonePlaceholder')}
+                        placeholder={t('contact.form.phonePlaceholder') || '+1 (555) 123-4567'}
                         className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300"
                         {...field}
                       />
@@ -195,100 +173,15 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-purple-200">
-                      {t('contact.form.company')}
+                      {t('contact.form.company') || 'Компания'}
                     </FormLabel>
                     <FormControl>
                       <Input 
-                        placeholder={t('contact.form.companyPlaceholder')}
+                        placeholder={t('contact.form.companyPlaceholder') || 'Название компании'}
                         className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
-            {/* Date and Time Selection */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <FormField
-                control={form.control}
-                name="consultationDate"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col">
-                    <FormLabel className="text-purple-200">
-                      {t('contact.form.date')}
-                    </FormLabel>
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant="outline"
-                            className={cn(
-                              "w-full justify-start text-left font-normal bg-white/10 border-purple-500/30 text-white hover:bg-white/20",
-                              !field.value && "text-purple-300"
-                            )}
-                          >
-                            <CalendarIcon className="mr-2 h-4 w-4" />
-                            {field.value ? (
-                              format(field.value, "PPP")
-                            ) : (
-                              <span>{t('contact.form.selectDate')}</span>
-                            )}
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar
-                          mode="single"
-                          selected={field.value}
-                          onSelect={field.onChange}
-                          disabled={(date) =>
-                            date < new Date() || date < new Date("1900-01-01")
-                          }
-                          initialFocus
-                          className={cn("p-3 pointer-events-auto")}
-                        />
-                      </PopoverContent>
-                    </Popover>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="consultationTime"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-purple-200">
-                      {t('contact.form.time')}
-                    </FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger className="bg-white/10 border-purple-500/30 text-white">
-                          <div className="flex items-center">
-                            <Clock className="mr-2 h-4 w-4" />
-                            <SelectValue 
-                              placeholder={t('contact.form.selectTime')}
-                              className="text-purple-300"
-                            />
-                          </div>
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent className="bg-slate-800 border-purple-500/30">
-                        {timeSlots.map((slot) => (
-                          <SelectItem 
-                            key={slot.value} 
-                            value={slot.value}
-                            className="text-white hover:bg-purple-500/20 focus:bg-purple-500/20"
-                          >
-                            {slot.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -301,11 +194,11 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-purple-200">
-                    {t('contact.form.youtube')}
+                    {t('contact.form.youtube') || 'YouTube видео (опционально)'}
                   </FormLabel>
                   <FormControl>
                     <Input 
-                      placeholder={t('contact.form.youtubePlaceholder')}
+                      placeholder={t('contact.form.youtubePlaceholder') || 'https://youtube.com/watch?v=...'}
                       className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300"
                       {...field}
                     />
@@ -322,11 +215,11 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-purple-200">
-                    {t('contact.form.message')}
+                    {t('contact.form.message') || 'Сообщение'}
                   </FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder={t('contact.form.messagePlaceholder')}
+                      placeholder={t('contact.form.messagePlaceholder') || 'Расскажите о вашем проекте, целях и ожиданиях...'}
                       className="bg-white/10 border-purple-500/30 text-white placeholder:text-purple-300 min-h-[80px]"
                       {...field}
                     />
@@ -343,7 +236,7 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                 className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white flex items-center justify-center gap-2"
               >
                 <FileText className="w-4 h-4" />
-                {t('contact.form.downloadPdf')}
+                {t('contact.form.downloadPdf') || 'Скачать брошюру'}
                 <ExternalLink className="w-4 h-4" />
               </Button>
               
@@ -355,14 +248,21 @@ const ContactForm = ({ children }: { children: React.ReactNode }) => {
                   disabled={isSubmitting}
                   className="flex-1 border-purple-500/30 text-purple-200 bg-purple-500/20 hover:bg-purple-500/20 hover:text-white"
                 >
-                  {t('contact.form.cancel')}
+                  {t('contact.form.cancel') || 'Отмена'}
                 </Button>
                 <Button
                   type="submit"
                   disabled={isSubmitting}
                   className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white hover:text-white"
                 >
-                  {t('contact.form.submit') || 'Отправить'}
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      {t('contact.form.sending') || 'Отправка...'}
+                    </>
+                  ) : (
+                    t('contact.form.submit') || 'Отправить'
+                  )}
                 </Button>
               </div>
             </div>

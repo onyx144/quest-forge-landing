@@ -67,7 +67,7 @@ const ConsultationForm = ({ children }: { children: React.ReactNode }) => {
         toast.success(t('consultation.form.success'));
         setIsOpen(false);
         form.reset();
-      } else {\
+      } else {
         toast.error(result.message || 'There was an error sending your message');
       }
     } catch (error) {
