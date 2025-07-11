@@ -57,7 +57,7 @@ const ContactSection = () => {
                 </svg>
               </a>
               
-              {/* Viber */}
+              {/* Viber    */}
               <a 
                 href="viber://chat?number=%2B380991234567" 
                 target="_blank" 
