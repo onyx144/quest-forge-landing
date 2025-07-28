@@ -116,7 +116,7 @@ const QuestInfoSection = () => {
             </div>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-            <div className="text-4xl mb-4">✨</div>
+            <div className="text-4xl mb-3">✨</div>
             <h3 className="text-2xl font-bold text-white mb-4">{t('quest.team.title')}</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
               {t('quest.team.desc')}
